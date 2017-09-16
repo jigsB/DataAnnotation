@@ -1,0 +1,40 @@
+﻿@*@model MVCDemo.Models.StudentModel*@
+@model MVCPracticeDataAnnotations.Models.dataAnnotationTestModel
+@{
+    ViewBag.Title = "Add";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add</h2>
+@Html.ActionLink("View List", "ValidationTest", "PracticeValidation")
+
+@using (Html.BeginForm("ValidationTest", "PracticeValidation", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.name)
+                @Html.TextBoxFor(m => m.name)
+                @Html.ValidationMessageFor(m => m.name)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.age)
+                @Html.TextBoxFor(m => m.age)
+                @Html.ValidationMessageFor(m => m.age)
+            </li>
+
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@{
+    Layout = null;
+}
